@@ -13,6 +13,22 @@
 */
 /*
 :root {
+
+	--navy-color: #001f3f;
+	--blue-color: #0074D9;
+	--aqua-color: #7FDBFF;
+	--teal-color: #39CCCC;
+	--olive-color: #3D9970;
+	--green-color: #2ECC40;
+	--lime-color: #01FF70;
+	--yellow-color: #FFDC00;
+	--orange-color: #FF851B;
+	--red-color: #FF4136;
+	--maroon-color: #85144b;
+	--fuchsia-color: #F012BE;
+	--purple-color: #B10DC9;
+
+
 	--main-brand-color: blue;
 	--secondary-brand-color: blue;
 	--positive-color: blue;
@@ -68,9 +84,6 @@ h6, .h6 { font-size: 1.3rem; }
 
 h1, h2, h3, h4, h5, h6, p { margin: 0; margin-bottom: 2.5rem;}
 
-a { color: #333; }
-a:hover, a:focus, a:active { color: #000; }
-
 strong, b, .bold { font-weight: bold; }
 em, i, var .italic { font-style: italic; }
 
@@ -89,6 +102,26 @@ kbd {
 	Inline Components
    ============================================================ */
 
+/* Links */
+a { 
+	color: #0074D9;
+	color: rgba(0, 114, 217, 0.8);
+	text-decoration: none;
+	background-image: linear-gradient(to right, transparent 50%, rgba(0, 114, 217, 0.6) 50%);
+	background-size: 200% 1px;
+	background-repeat: repeat-x;
+	background-position: 0 1.085em;
+	transition: background ease 0.5s;
+}
+
+a:hover,
+a:focus,
+a:active {
+	text-shadow: 1px 0 0 #FAFAFA, 2px 0 0 #FAFAFA, -1px 0 0 #FAFAFA, -2px 0 0 #FAFAFA;
+	background-position: -100% 1.085em;
+}
+
+/* Horizontal Rules */
 hr {
 	display: block;
 	clear: both;
@@ -321,7 +354,7 @@ img { vertical-align: middle; height: auto; }
    ============================================================ */
 
  .uppercase { text-transform: uppercase; }
- 
+
  /* When a text is made all capitals, 
     upper characters are lowercase. 
     e.g. Mᵐᵉ DE SÉVIGNÉ */

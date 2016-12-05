@@ -18,3 +18,4 @@ See the [LICENSE](LICENSE) file for license rights and limitations.
 
 ### Third Party Credits
 * Reset CSS: **Normalize.css** (https://necolas.github.io/normalize.css/)
+* Color palette: **clrs** (http://clrs.cc/)
