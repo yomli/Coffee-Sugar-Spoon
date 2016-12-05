@@ -1,0 +1,330 @@
+@charset "UTF-8";
+
+/*!
+* CoffeeSuger&Spoon v16.12
+* @author: Guillaume Litaudon <guillaume.litaudon@gmail.com>
+* MIT-Beerware License
+*/
+
+/* 
+   At the time of writing, CSS variables are not fully
+   supported (Edge & IE11). This is just the color palette
+   and some fonts for quick access.
+*/
+/*
+:root {
+	--main-brand-color: blue;
+	--secondary-brand-color: blue;
+	--positive-color: blue;
+	--neutral-color: blue;
+	--danger-color: blue;
+	--alert-color: blue;
+	--success-color: blue;
+
+	--sans-font-stack: sans-serif;
+	--serif-font-stack: serif;
+	--monospace-font-stack: monospace;
+}
+*/
+
+/* ============================================================
+	Base
+   ============================================================ */
+
+*, *::after, *::before { 
+	box-sizing: border-box; /* Switching to border-box model */
+}
+
+html {
+	font-size: 62.5%; /* 62.5% of 16px = 10px */
+	font-size: calc(1em * 0.625); /* IE9-IE11 fix */
+}
+
+
+body {
+	background-color: #FAFAFA; /* Pure-white background is an issue for dyslexics */
+	color: #333; /* Body text on screen is dark grey rather than black */
+	color: rgba(0, 0, 0, 0.8); /* Opacity remains legible with background changes */
+	font-size: 1.8rem; /* Bigger point size for body text (>15px) */
+	line-height: 1.414; /* Between 1.3 to 1.7 */
+	font-family: Latte, Calisto, Calibri, "Gill Sans", sans-serif;
+}
+
+/* Dark theme test */
+/* body {
+	background-color:#333;
+	color: #ccc;
+	color: rgba(255, 255, 255, 0.8);
+} */
+
+
+/* Headings that are smaller while being distinct */
+h1, .h1 { font-size: 3.6rem; }
+h2, .h2 { font-size: 2.7rem; }
+h3, .h3 { font-size: 2.1rem; }
+h4, .h4 { font-size: 2.0rem; }
+h5, .h5 { font-size: 1.5rem; }
+h6, .h6 { font-size: 1.3rem; }
+
+h1, h2, h3, h4, h5, h6, p { margin: 0; margin-bottom: 2.5rem;}
+
+a { color: #333; }
+a:hover, a:focus, a:active { color: #000; }
+
+strong, b, .bold { font-weight: bold; }
+em, i, var .italic { font-style: italic; }
+
+ul, ol { padding-left: 2em; }
+
+code,
+pre,
+samp,
+kbd { 
+	white-space: pre-line; /* IE fix */
+	white-space: pre-wrap;
+	font-family: "Source Code Pro", Consolas, Courier, monospace;
+}
+ 
+/* ============================================================
+	Inline Components
+   ============================================================ */
+
+hr {
+	display: block;
+	clear: both;
+	height: 1px;
+	width: 60%;
+	margin: 2.5em auto;
+	padding: 0;
+	border: 0;
+	background: #333;
+	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.2), rgba(0,0,0,0));
+}
+
+code, kbd, mark { border-radius: 3px; }
+
+/* The <u> tag is for "non-textual annotation"
+   such as highlighting a mispelled word.
+*/
+u {
+	text-decoration: none; 
+	border-bottom: 1px dashed #E22025;
+}
+
+/* Mobile-first abbreviations */
+abbr[title] { 
+	text-decoration: none;
+	border-bottom: 0; 
+	cursor: help;
+}
+abbr[title]::after { content: ' ('attr(title)') '; }
+
+mark, 
+.highlight {
+	display: inline-block;
+	border-radius: 3px;
+	margin: 0 0.1em;
+	padding: 0.1em 0.6em;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	position: relative;
+	padding-left: 1.5em;
+	background-color: #F5DA73;
+	/* It's so important that we select all */
+	-moz-user-select:all;
+	-webkit-user-select:all;
+	-ms-user-select:all;
+	user-select:all;
+}
+
+mark::before,
+.highlight::before {
+	/* A little bookmark icon */
+	content: '\a0';
+	display: inline-block;
+	position: absolute;
+	top: -1px;
+	left: 0.3em;
+	width: 0;
+	height: 1.5em;
+	border: 0.4em solid #D34747;
+	border-top: 0 solid;
+	border-bottom: 0.5em solid rgba(0,0,0,0);
+	box-shadow: 2px 0 0 rgba(0,0,0,0.2);
+}
+
+
+del {
+	display: inline-block;
+	border-radius: 3px;
+	margin: 0 0.1em;
+	padding: 0.1em 0.6em;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	text-decoration: none;
+	background-color: #fbb6c2;
+	color: rgba(0,0,0,0.4);
+
+	position:relative;
+	padding-left: 1.5em;
+}
+
+del::before {
+	/* A little X icon */
+	content: '×';
+	display: inline-block;
+	position: absolute;
+	top: -0.3em;
+	left: 0.3em;
+	font-weight: bold;
+	color: #E22025;
+	font-size: 1.2em;
+}
+
+ins {
+	display: inline-block;
+	border-radius: 3px;
+	margin: 0 0.1em;
+	padding: 0.1em 0.6em;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	text-decoration: none;
+	background-color: #d4fcbc;
+
+	position:relative;
+	padding-left: 1.5em;
+}
+
+ins::before {
+	/* A little asterisk icon */
+	content: '*';
+	display: inline-block;
+	position: absolute;
+	top: -0.3em;
+	left: 0.2em;
+	font-weight: bold;
+	color: #C0DE25;
+	font-size: 2em;
+}
+
+code {
+	display: inline-block;
+	border-radius: 3px;
+	margin: 0 0.1em;
+	padding: 0.1em 0.6em;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.1);
+
+	position: relative;
+	padding-left: 1.5em;
+}
+
+code::before {
+	/* A little chevron icon */
+	content: '>';
+	display: inline-block;
+	position: absolute;
+	top: -0.3em;
+	left: 0.2em;
+	font-weight: bold;
+	color: rgba(0,0,0,0.2);
+}
+
+samp {
+	display: inline-block;
+	border-radius: 3px;
+	margin: 0 0.1em;
+	padding: 0.1em 0.6em;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+
+	position: relative;
+	padding-left: 1.5em;
+}
+
+samp::before {
+	/* A little terminal icon */
+	content: '>';
+	display: inline-block;
+	position: absolute;
+	top: -0.3em;
+	left: 0.2em;
+	font-weight: bold;
+	color: rgba(255,255,255,0.2);
+}
+
+/* When browsers find a select they
+   don't understand, they drop the
+   entire thing, so we can't have
+   one block. */
+samp::-moz-selection {
+	background-color: #fff;
+	color: rgba(0,0,0,0.8);
+}
+
+samp::selection { 
+	background-color: #fff;
+	color: rgba(0,0,0,0.8);
+}
+
+
+kbd {
+	display: inline-block;
+	font-size: 0.8em;
+	margin: 0 0.1em;
+	padding: 0.1em 0.6em;
+	border-radius: 3px;
+	background-color: #f7f7f7;
+	border: 1px solid #ccc;	
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.2),
+				0 0 0 2px #fff inset;
+	color: #333;
+	text-shadow: 0 1px 0 #fff;
+}
+
+q::before { content: open-quote; }
+q::after { content: close-quote; }
+
+q, q:lang(en) { quotes: '“' '”' '‘' '’'; }
+q:lang(fr) { quotes: '«\a0' '\a0»' '“\a0' '\a0”'; } /* Always a non-breakable space before a double punctuation in French. */
+
+.spoiler, .spoiler > * { 
+	transition: text-shadow 0.5s, color 0.5s, font-weight 0.5s; 
+	text-shadow: none; 
+	cursor:zoom-in;
+}
+.spoiler:not(:hover) { /*background-color: black;*/ 
+	text-shadow: 0px 0px 6px black; 
+	color:transparent; 
+	/*font-size:1.2em;*/
+	font-weight:bold;
+}
+/*.spoiler:not(:hover):before { content:'\a0Spoiler'; color:white; }*/
+.spoiler:not(:hover) img {
+    visibility: hidden;
+    opacity: 0;
+}
+/* fix weird transitions on Chrome: */
+blockquote, blockquote > *:not(a) { color: black }
+/* ajouter un truc after pour empêcher le dessous de remonter ? */
+
+/* Add a quadratin tiret before the author */
+blockquote > cite:last-child::before { content: '—\a0'; }
+
+/* ============================================================
+	Block Components
+   ============================================================ */
+
+img { vertical-align: middle; height: auto; }
+
+
+/* ============================================================
+	Helpers
+   ============================================================ */
+
+ .uppercase { text-transform: uppercase; }
+ 
+ /* When a text is made all capitals, 
+    upper characters are lowercase. 
+    e.g. Mᵐᵉ DE SÉVIGNÉ */
+ .uppercase sup { text-transform: lowercase; }
+
+ .underline { text-decoration: underline; }
