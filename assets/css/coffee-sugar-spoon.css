@@ -6,6 +6,48 @@
 * MIT-Beerware License
 */
 
+/* ============================================================
+	Fonts
+   ============================================================ */
+
+@font-face {
+	font-family: "Latte";
+	font-style: normal;
+	font-weight: 400;
+	src: 	local("Latte Regular"),
+			url("../fonts/latte-regular-webfont.woff2") format("woff2"),
+			url("../fonts/latte-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Latte";
+	font-style: italic;
+	font-weight: 400;
+	src: 	local("Latte Italic"),
+			url("../fonts/latte-italic-webfont.woff2") format("woff2"),
+			url("../fonts/latte-italic-webfont.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Latte";
+	font-style: normal;
+	font-weight: 700;
+	src: 	local("Latte Bold"),
+			url("../fonts/latte-bold-webfont.woff2") format("woff2"),
+			url("../fonts/latte-bold-webfont.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Latte";
+	font-style: italic;
+	font-weight: 700;
+	src: 	local("Latte Bold Italic"),
+			url("../fonts/latte-bolditalic-webfont.woff2") format("woff2"),
+			url("../fonts/latte-bolditalic-webfont.woff") format("woff");
+}
+
+
+
 /* 
    At the time of writing, CSS variables are not fully
    supported (Edge & IE11). This is just the color palette
@@ -37,7 +79,7 @@
 	--alert-color: blue;
 	--success-color: blue;
 
-	--sans-font-stack: sans-serif;
+	--sans-font-stack: Latte, Calisto, Calibri, "Gill Sans", sans-serif;
 	--serif-font-stack: serif;
 	--monospace-font-stack: monospace;
 }
@@ -84,7 +126,7 @@ h6, .h6 { font-size: 1.3rem; }
 
 h1, h2, h3, h4, h5, h6, p { margin: 0; margin-bottom: 2.5rem;}
 
-strong, b, .bold { font-weight: bold; }
+strong, b, .bold { font-weight: 700; }
 em, i, var .italic { font-style: italic; }
 
 ul, ol { padding-left: 2em; }
