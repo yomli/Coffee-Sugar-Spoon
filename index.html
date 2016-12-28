@@ -86,7 +86,7 @@
 			<p>The var element is for searching <var>n</var> occurences.</p>
 			<p>Time is an illusion. <time datetime="12:30">Lunchtime</time> doubly so.</p>
 			<p>Spoilers: <span class="spoiler">there is no spoilers.</span></p>
-			<p>I rate this <span class="rating-stars">3 hearts</span>!</p>
+			<p>I rate this <span class="rating--stars">3 hearts</span>!</p>
 			<p>65 GB free out of 120 GB <meter max="120" value="55">55 GB</meter></p>
 
 			<p>Ceci est un test montrant l'ensemble dans un paragraphe: Lorem ipsum Tempor labore commodo ut cupidatat est sit pariatur commodo ut anim nulla id ullamco aute incididunt commodo exercitation tempor est consequat ea ut Ut aliquip irure et do sunt non occaecat consectetur esse voluptate velit in Excepteur in sit ad laborum eiusmod ex do sint sed ullamco ex enim laboris esse Duis occaecat culpa incididunt nostrud commodo ut qui labore ex dolor proident incididunt occaecat adipisicing anim commodo cupidatat mollit in ut elit laboris <kbd>Alt</kbd>+<kbd>F4</kbd> ut ut aliqua in incididunt mollit commodo fugiat incididunt aute aute proident anim sed in reprehenderit do Ut culpa nisi dolor fugiat cillum fugiat labore cupidatat fugiat ut fugiat deserunt proident ad do sint Ut elit pariatur sed veniam pariatur Excepteur exercitation do sed sed ad aliquip in culpa tempor consequat proident adipisicing in dolore <span class="spoiler">Duis sed adipisicing cillum in incididunt sed eiusmod consequat Ut amet fugiat Excepteur amet proident irure ullamco</span> labore sed ut exercitation sit magna consectetur eiusmod ullamco in qui in dolor nulla et nisi dolor dolor eu proident amet id tempor mollit sed pariatur dolore ut culpa in eu voluptate reprehenderit est exercitation nisi reprehenderit sint cupidatat dolor consectetur occaecat sit.</p>
@@ -116,22 +116,22 @@
 				</li>
 			</ol>
 			<h4>Roman ordered list</h4>
-			<ol class="list-roman">
+			<ol class="list--roman">
 				<li>First level list</li>
 				<li>First level list</li>
 			</ol>
 			<h4>Dash unordered list</h4>
-			<ul class="list-dash">
+			<ul class="list--dash">
 				<li>First level list</li>
 				<li>First level list</li>
 			</ul>
 			<h4>Arrow unordered list</h4>
-			<ul class="list-arrow">
+			<ul class="list--arrow">
 				<li>First level list</li>
 				<li>First level list</li>
 			</ul>
 			<h4>Unstyled list</h4>
-			<ul class="list-unstyled">
+			<ul class="list--unstyled">
 				<li>First level list</li>
 				<li>First level list
 					<ul>
@@ -141,7 +141,7 @@
 				</li>
 			</ul>
 			<h4>Inline list</h4>
-			<ul class="list-inline">
+			<ul class="list--inline">
 				<li>First level list</li>
 				<li>First level list</li>
 				<li>First level list</li>
@@ -189,11 +189,116 @@ p q r s t u v w x y z { | } ~
 			</pre>
 	
 	<h2>Buttons</h2>
-		<h3>Button</h3>
-			<button>Button</button>
+		<h3>Buttons</h3>
+			<div>
+				<button>Button</button>
+				<button class="button--primary">Button</button>
+				<button class="button--accent">Accent</button>
+				<button class="button--danger">Danger</button>
+				<button class="button--alert">Alert</button>
+				<button class="button--success">Success</button>
+			</div>
+			<div>
+				<button disabled>Button</button>
+				<button class="button--primary" disabled>Button</button>
+				<button class="button--accent" disabled>Accent</button>
+				<button class="button--danger" disabled>Danger</button>
+				<button class="button--alert" disabled>Alert</button>
+				<button class="button--success" disabled>Success</button>
+			</div>
 
-		<h3>Text Button</h3>
-			<a href="#" title="Title">Button</a>
+			<h4>Flat Buttons</h4>
+				<div>
+					<button class="button--flat">Button</button>
+					<button class="button--primary button--flat">Button</button>
+					<button class="button--accent button--flat">Accent</button>
+					<button class="button--danger button--flat">Danger</button>
+					<button class="button--alert button--flat">Alert</button>
+					<button class="button--success button--flat">Success</button>
+				</div>
+				<div>
+					<button class="button--flat" disabled>Button</button>
+					<button class="button--primary button--flat" disabled>Button</button>
+					<button class="button--accent button--flat" disabled>Accent</button>
+					<button class="button--danger button--flat" disabled>Danger</button>
+					<button class="button--alert button--flat" disabled>Alert</button>
+					<button class="button--success button--flat" disabled>Success</button>
+				</div>
+
+			<h4>Raised Buttons</h4>
+				<div>
+					<button class="button--raised">Button</button>
+					<button class="button--primary button--raised">Button</button>
+					<button class="button--accent button--raised">Accent</button>
+					<button class="button--danger button--raised">Danger</button>
+					<button class="button--alert button--raised">Alert</button>
+					<button class="button--success button--raised">Success</button>
+				</div>
+				<div>
+					<button class="button--raised" disabled>Button</button>
+					<button class="button--primary button--raised" disabled>Button</button>
+					<button class="button--accent button--raised" disabled>Accent</button>
+					<button class="button--danger button--raised" disabled>Danger</button>
+					<button class="button--alert button--raised" disabled>Alert</button>
+					<button class="button--success button--raised" disabled>Success</button>
+				</div>
+			
+
+		<h3>Text Buttons</h3>
+			<div>
+				<a href="#" title="Title" class="button">Button</a>
+				<a href="#" title="Title" class="button button--primary">Button</a>
+				<a href="#" title="Title" class="button button--accent">Accent</a>
+				<a href="#" title="Title" class="button button--danger">Danger</a>
+				<a href="#" title="Title" class="button button--alert">Alert</a>
+				<a href="#" title="Title" class="button button--success">Success</a>
+			</div>
+			<div>
+				<a href="#" title="Title" class="button button--disabled">Button</a>
+				<a href="#" title="Title" class="button button--primary button--disabled">Button</a>
+				<a href="#" title="Title" class="button button--accent button--disabled">Accent</a>
+				<a href="#" title="Title" class="button button--danger button--disabled">Danger</a>
+				<a href="#" title="Title" class="button button--alert button--disabled">Alert</a>
+				<a href="#" title="Title" class="button button--success button--disabled">Success</a>
+			</div>
+
+			<h4>Flat Text Buttons</h4>
+				<div>
+					<a href="#" title="Title" class="button button--flat">Button</a>
+					<a href="#" title="Title" class="button button--primary button--flat">Button</a>
+					<a href="#" title="Title" class="button button--accent button--flat">Accent</a>
+					<a href="#" title="Title" class="button button--danger button--flat">Danger</a>
+					<a href="#" title="Title" class="button button--alert button--flat">Alert</a>
+					<a href="#" title="Title" class="button button--success button--flat">Success</a>
+				</div>
+				<div>
+					<a href="#" title="Title" class="button button--disabled button--flat">Button</a>
+					<a href="#" title="Title" class="button button--primary button--disabled button--flat">Button</a>
+					<a href="#" title="Title" class="button button--accent button--disabled button--flat">Accent</a>
+					<a href="#" title="Title" class="button button--danger button--disabled button--flat">Danger</a>
+					<a href="#" title="Title" class="button button--alert button--disabled button--flat">Alert</a>
+					<a href="#" title="Title" class="button button--success button--disabled button--flat">Success</a>
+				</div>
+
+			<h4>Raised Text Buttons</h4>
+
+				<div>
+					<a href="#" title="Title" class="button button--raised">Button</a>
+					<a href="#" title="Title" class="button button--primary button--raised">Button</a>
+					<a href="#" title="Title" class="button button--accent button--raised">Accent</a>
+					<a href="#" title="Title" class="button button--danger button--raised">Danger</a>
+					<a href="#" title="Title" class="button button--alert button--raised">Alert</a>
+					<a href="#" title="Title" class="button button--success button--raised">Success</a>
+				</div>
+				<div>
+					<a href="#" title="Title" class="button button--disabled button--raised">Button</a>
+					<a href="#" title="Title" class="button button--primary button--disabled button--raised">Button</a>
+					<a href="#" title="Title" class="button button--accent button--disabled button--raised">Accent</a>
+					<a href="#" title="Title" class="button button--danger button--disabled button--raised">Danger</a>
+					<a href="#" title="Title" class="button button--alert button--disabled button--raised">Alert</a>
+					<a href="#" title="Title" class="button button--success button--disabled button--raised">Success</a>
+				</div>
+			
 
 	<h2>Images</h2>
 		<h3>Landscape Image</h3>

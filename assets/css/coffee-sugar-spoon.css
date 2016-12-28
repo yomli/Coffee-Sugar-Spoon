@@ -71,13 +71,11 @@
 	--purple-color: #B10DC9;
 
 
-	--main-brand-color: blue;
-	--secondary-brand-color: blue;
-	--positive-color: blue;
-	--neutral-color: blue;
-	--danger-color: blue;
-	--alert-color: blue;
-	--success-color: blue;
+	--primary-color: #0074D9;
+	--accent-color: #FFDC00;
+	--danger-color: #FF4136;
+	--alert-color: #FFDC00;
+	--success-color: #2ECC40;
 
 	--sans-font-stack: Latte, Calisto, Calibri, "Gill Sans", sans-serif;
 	--monospace-font-stack: "Source Code Pro", "Roboto Mono", Cousine, Menlo, Consolas, Courier, monospace;
@@ -188,26 +186,26 @@ hr {
 }
 
 /* Lists */
-ol.list-roman li {
+ol.list--roman li {
 	list-style-type: upper-roman;
 }
 
-ul.list-dash li,
-ul.list-arrow li,
-ul.list-unstyled li,
-ul.list-inline li {
+ul.list--dash li,
+ul.list--arrow li,
+ul.list--unstyled li,
+ul.list--inline li {
 	list-style-type: none;
 }
 
-ul.list-dash li:before {
+ul.list--dash li:before {
 	content: '— ';
 }
 
-ul.list-arrow li:before {
+ul.list--arrow li:before {
 	content: '→ ';
 }
 
-ul.list-inline li {
+ul.list--inline li {
 	display: inline-block;
 	margin-right: 1em;
 }
@@ -457,6 +455,132 @@ blockquote, blockquote > *:not(a) { color: black }
 blockquote > cite:last-child::before { content: '—\a0'; }
 
 /* ============================================================
+	Form Components
+   ============================================================ */
+button, 
+a.button {
+	-moz-appearance: none;
+	appearance: none;
+	font-family: inherit;
+	font-size: 1.6rem;
+	height: 3.6rem;
+	line-height: 3.6rem;
+	padding: 0 2.5rem;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	vertical-align: middle;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	border-radius: 3px;
+	color: rgba(0, 0, 0, 0.8);
+	background-color: transparent;
+	background-image: none;
+	display: inline-block;
+	text-transform: uppercase;
+	border: none;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	text-shadow: none; /* To disable the default link behavior */
+}
+
+button:disabled,
+a.button.button--disabled {
+	cursor: not-allowed;
+	pointer-events: none;
+	opacity: 0.6;
+	box-shadow: none !important;
+}
+
+.button--primary,
+.button--danger,
+.button--accent,
+.button--alert,
+.button--success,
+a.button.button--primary,
+a.button.button--danger,
+a.button.button--accent,
+a.button.button--alert,
+a.button.button--success {
+	color: #FAFAFA;
+}
+
+.button--primary,
+a.button.button--primary {
+	background-color: #0074D9;
+}
+
+.button--accent,
+a.button.button--accent {
+	background-color: #FFDC00;
+}
+
+.button--danger,
+a.button.button--danger {
+	background-color: #FF4136;
+}
+
+.button--alert,
+a.button.button--alert {
+	background-color: #FF851B;
+}
+
+.button--success,
+a.button.button--success {
+	background-color: #2ECC40;
+}
+
+/* Flat buttons */
+.button--flat,
+a.button.button--flat {
+	color: rgba(0, 0, 0, 0.8);
+	background-color: transparent;
+}
+
+.button--flat:hover,
+.button--flat:active,
+a.button.button--flat:hover,
+a.button.button--flat:active {
+	background-color: rgba(0,0,0,0.1);
+}
+
+.button--primary.button--flat,
+a.button.button--primary.button--flat {
+	color: #0074D9;
+}
+
+.button--accent.button--flat,
+a.button.button--accent.button--flat {
+	color: #FFDC00;
+}
+
+.button--danger.button--flat,
+a.button.button--danger.button--flat {
+	color: #FF4136;
+}
+
+.button--alert.button--flat,
+a.button.button--alert.button--flat {
+	color: #FF851B;
+}
+
+.button--success.button--flat,
+a.button.button--success.button--flat {
+	color: #2ECC40;
+}
+
+/* Raised buttons */
+.button--raised,
+a.button.button--raised {
+	box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
 	Block Components
    ============================================================ */
 
@@ -477,3 +601,19 @@ img { vertical-align: middle; height: auto; }
  .underline { text-decoration: underline; }
 
  .small-caps { font-variant: small-caps; }
+
+
+ /* ============================================================
+	Extras
+   ============================================================ */
+
+ /* Lists 
+ https://designshack.net/articles/css/5-simple-and-practical-css-list-styles-you-can-copy-and-paste/ 
+ http://www.alsacreations.com/article/lire/1210-donnez-du-style-a-vos-listes.html
+ */
+
+/* Others :
+
+http://www.inwebson.com/css3/css-tricks-for-headings-fonts-and-text-styling/
+https://tympanus.net/codrops/2012/11/02/heading-set-styling-with-css/
+*/
