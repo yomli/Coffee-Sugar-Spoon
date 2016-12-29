@@ -74,7 +74,7 @@
 	--primary-color: #0074D9;
 	--accent-color: #FFDC00;
 	--danger-color: #FF4136;
-	--alert-color: #FFDC00;
+	--alert-color: #FF851B;
 	--success-color: #2ECC40;
 
 	--sans-font-stack: Latte, Calisto, Calibri, "Gill Sans", sans-serif;
@@ -651,6 +651,41 @@ a.button.button--round.button--small {
 	width: 2.5rem;
 }
 
+/* Inputs */
+input {
+	height: 3.6rem;
+	width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	width: 3.6rem;
+}
+
+input,
+textarea {
+	display: block;
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	outline: none;
+	box-shadow: none;
+	transition: border ease 0.3s, box-shadow ease 0.6s;
+}
+
+input:focus,
+textarea:focus {
+	box-shadow: 0px -1px 0px #0074D9 inset;
+	border-bottom: 1px solid #0074D9;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+	color: rgba(0, 0, 0, 0.5);
+	opacity: 1;
+}
+
 /* ============================================================
 	Block Components
    ============================================================ */
@@ -682,6 +717,8 @@ img { vertical-align: middle; height: auto; }
  https://designshack.net/articles/css/5-simple-and-practical-css-list-styles-you-can-copy-and-paste/ 
  http://www.alsacreations.com/article/lire/1210-donnez-du-style-a-vos-listes.html
  */
+
+/* Reveal password */
 
 /* Others :
 
