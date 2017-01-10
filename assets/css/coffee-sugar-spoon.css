@@ -122,6 +122,23 @@ h6, .h6 { font-size: 1.6rem; }
 
 h1, h2, h3, h4, h5, h6, p, details, input { margin: 0; margin-bottom: 2.5rem;}
 
+
+/* Overflows */
+p, details, div {
+	word-wrap: break-word; /* For partial support IE/Edge */
+	overflow-wrap: break-word;
+}
+
+pre {
+	overflow: auto;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed; /* Text-overflow will not work without this */
+}
+
+
 strong, b, .bold { font-weight: 700; }
 em, i, var, dt, .italic { font-style: italic; }
 
@@ -492,8 +509,6 @@ details {
 
 }
 
-
-
 /* ============================================================
 	Form Components
    ============================================================ */
@@ -748,6 +763,12 @@ img { vertical-align: middle; height: auto; }
 
  .small-caps { font-variant: small-caps; }
 
+ .hyphens {
+ 	-webkit-hyphens: auto;
+ 	-ms-hyphens: auto;
+ 	hyphens: auto;
+ }
+
 
  /* ============================================================
 	Extras
@@ -764,4 +785,5 @@ img { vertical-align: middle; height: auto; }
 
 http://www.inwebson.com/css3/css-tricks-for-headings-fonts-and-text-styling/
 https://tympanus.net/codrops/2012/11/02/heading-set-styling-with-css/
+text-overflow:ellipsis;
 */
