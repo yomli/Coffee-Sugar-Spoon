@@ -120,7 +120,7 @@ h4, .h4 { font-size: 2.5rem; }
 h5, .h5 { font-size: 1.8rem; }
 h6, .h6 { font-size: 1.6rem; }
 
-h1, h2, h3, h4, h5, h6, p, details, input { margin: 0; margin-bottom: 2.5rem;}
+h1, h2, h3, h4, h5, h6, p, details, input, select, textarea { margin: 0; margin-bottom: 2.5rem;}
 
 
 /* Overflows */
@@ -505,207 +505,13 @@ pre {
 	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
 
-details {
+details { /* Not supported by IE and Edge */
 
 }
 
 /* ============================================================
 	Form Components
    ============================================================ */
-button, 
-a.button {
-	-moz-appearance: none;
-	appearance: none;
-	font-family: inherit;
-	font-size: 1.6rem;
-	height: 3.6rem;
-	line-height: 3.6rem;
-	padding: 0 2.5rem;
-	margin-right: 1em;
-	margin-bottom: 1em;
-	vertical-align: middle;
-	text-align: center;
-	white-space: nowrap;
-	overflow: hidden;
-	position: relative;
-	border-radius: 3px;
-	color: rgba(0, 0, 0, 0.8);
-	background-color: transparent;
-	background-image: none;
-	display: inline-block;
-	text-transform: uppercase;
-	border: none;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	-ms-touch-action: manipulation;
-	touch-action: manipulation;
-	text-shadow: none; /* To disable the default link behavior */
-}
-
-/* Ripple effect */
-button::after,
-a.button::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 5px;
-	height: 5px;
-	background: rgba(255, 255, 255, 0.4);
-	opacity: 0;
-	border-radius: 100%;
-	transform: scale(1, 1) translate(-50%);
-	transform-origin: 50% 50%;
-}
-
-@keyframes ripple-effect {
-	0% {
-		transform: scale(0, 0);
-		opacity: 1;
-	}
-	20% {
-		transform: scale(25, 25);
-		opacity: 1;
-	}
-  	100% {
-		opacity: 0;
-		transform: scale(40, 40);
-  	}
-}
-
-button:focus:not(:active)::after,
-a.button:focus:not(:active)::after {
-	animation: ripple-effect 1s ease-out;
-}
-
-button:disabled,
-a.button.button--disabled {
-	cursor: not-allowed;
-	pointer-events: none;
-	opacity: 0.6;
-	box-shadow: none !important;
-}
-
-.button--primary,
-.button--danger,
-.button--accent,
-.button--alert,
-.button--success,
-a.button.button--primary,
-a.button.button--danger,
-a.button.button--accent,
-a.button.button--alert,
-a.button.button--success {
-	color: #FAFAFA;
-}
-
-.button--primary,
-a.button.button--primary {
-	background-color: #0074D9;
-}
-
-.button--accent,
-a.button.button--accent {
-	background-color: #FFDC00;
-}
-
-.button--danger,
-a.button.button--danger {
-	background-color: #FF4136;
-}
-
-.button--alert,
-a.button.button--alert {
-	background-color: #FF851B;
-}
-
-.button--success,
-a.button.button--success {
-	background-color: #2ECC40;
-}
-
-/* Flat buttons */
-.button--flat,
-a.button.button--flat {
-	color: rgba(0, 0, 0, 0.8);
-	background-color: transparent;
-}
-
-.button--flat:hover,
-.button--flat:active,
-a.button.button--flat:hover,
-a.button.button--flat:active {
-	background-color: rgba(0,0,0,0.1);
-}
-
-.button--primary.button--flat,
-a.button.button--primary.button--flat {
-	color: #0074D9;
-}
-
-.button--accent.button--flat,
-a.button.button--accent.button--flat {
-	color: #FFDC00;
-}
-
-.button--danger.button--flat,
-a.button.button--danger.button--flat {
-	color: #FF4136;
-}
-
-.button--alert.button--flat,
-a.button.button--alert.button--flat {
-	color: #FF851B;
-}
-
-.button--success.button--flat,
-a.button.button--success.button--flat {
-	color: #2ECC40;
-}
-
-/* Raised buttons */
-.button--raised,
-a.button.button--raised {
-	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
-}
-
-/* Round buttons */
-.button--round,
-a.button.button--round {
-	border-radius: 100%;
-	height: 3.6rem;
-	width: 3.6rem;
-	line-height: 3.6rem;
-	padding: 0;
-}
-
-/* Size */
-.button--large,
-a.button.button--large {
-	height: 5.1rem;
-	line-height: 5.1rem;
-}
-
-.button--round.button--large,
-a.button.button--round.button--large {
-	width: 5.1rem;
-}
-
-.button--small,
-a.button.button--small {
-	height: 2.5rem;
-	line-height: 2.5rem;
-	font-size: 1.4rem;
-}
-
-.button--round.button--small,
-a.button.button--round.button--small {
-	width: 2.5rem;
-}
-
 /* Inputs */
 input {
 	height: 3.6rem;
@@ -739,6 +545,284 @@ input::-moz-placeholder,
 textarea::-moz-placeholder {
 	color: rgba(0,0,0,0.5);
 	opacity: 1;
+}
+
+/* Buttons */
+button, 
+a.button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+	-moz-appearance: none;
+	appearance: none;
+	font-family: inherit;
+	font-size: 1.6rem;
+	height: 3.6rem;
+	line-height: 3.6rem;
+	padding: 0 2.5rem;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	vertical-align: middle;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	border-radius: 3px;
+	color: rgba(0, 0, 0, 0.8);
+	background-color: transparent;
+	background-image: none;
+	display: inline-block;
+	text-transform: uppercase;
+	border: none;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	text-shadow: none; /* To disable the default link behavior */
+}
+
+button::after,
+a.button::after,
+input[type="button"]::after,
+input[type="submit"]::after,
+input[type="reset"]::after { /* Ripple effect */
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 5px;
+	height: 5px;
+	background: rgba(255, 255, 255, 0.4);
+	opacity: 0;
+	border-radius: 100%;
+	transform: scale(1, 1) translate(-50%);
+	transform-origin: 50% 50%;
+}
+
+@keyframes ripple-effect {
+	0% {
+		transform: scale(0, 0);
+		opacity: 1;
+	}
+	20% {
+		transform: scale(25, 25);
+		opacity: 1;
+	}
+  	100% {
+		opacity: 0;
+		transform: scale(40, 40);
+  	}
+}
+
+button:focus:not(:active)::after,
+a.button:focus:not(:active)::after,
+input[type="button"]:focus:not(:active)::after,
+input[type="submit"]:focus:not(:active)::after,
+input[type="reset"]:focus:not(:active)::after {
+	animation: ripple-effect 1s ease-out;
+}
+
+button:disabled,
+a.button.button--disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled {
+	cursor: not-allowed;
+	pointer-events: none;
+	opacity: 0.6;
+	box-shadow: none !important;
+}
+
+.button--primary,
+.button--danger,
+.button--accent,
+.button--alert,
+.button--success,
+a.button.button--primary,
+a.button.button--danger,
+a.button.button--accent,
+a.button.button--alert,
+a.button.button--success,
+input[type="button"].button--primary,
+input[type="submit"].button--primary,
+input[type="reset"].button--primary,
+input[type="button"].button--danger,
+input[type="submit"].button--danger,
+input[type="reset"].button--danger,
+input[type="button"].button--accent,
+input[type="submit"].button--accent,
+input[type="reset"].button--accent,
+input[type="button"].button--alert,
+input[type="submit"].button--alert,
+input[type="reset"].button--alert,
+input[type="button"].button--success,
+input[type="submit"].button--success,
+input[type="reset"].button--success {
+	color: #FAFAFA;
+}
+
+.button--primary,
+a.button.button--primary,
+input[type="button"].button--primary,
+input[type="submit"].button--primary,
+input[type="reset"].button--primary {
+	background-color: #0074D9;
+}
+
+.button--accent,
+a.button.button--accent,
+input[type="button"].button--accent,
+input[type="submit"].button--accent,
+input[type="reset"].button--accent {
+	background-color: #FFDC00;
+}
+
+.button--danger,
+a.button.button--danger,
+input[type="button"].button--danger,
+input[type="submit"].button--danger,
+input[type="reset"].button--danger {
+	background-color: #FF4136;
+}
+
+.button--alert,
+a.button.button--alert,
+input[type="button"].button--alert,
+input[type="submit"].button--alert,
+input[type="reset"].button--alert {
+	background-color: #FF851B;
+}
+
+.button--success,
+a.button.button--success,
+input[type="button"].button--success,
+input[type="submit"].button--success,
+input[type="reset"].button--success {
+	background-color: #2ECC40;
+}
+
+/* Flat buttons */
+.button--flat,
+a.button.button--flat,
+input[type="button"].button--flat,
+input[type="submit"].button--flat,
+input[type="reset"].button--flat {
+	color: rgba(0, 0, 0, 0.8);
+	background-color: transparent;
+}
+
+.button--flat:hover,
+.button--flat:active,
+a.button.button--flat:hover,
+a.button.button--flat:active,
+input[type="button"].button--flat:hover,
+input[type="submit"].button--flat:hover,
+input[type="reset"].button--flat:hover,
+input[type="button"].button--flat:active,
+input[type="submit"].button--flat:active,
+input[type="reset"].button--flat:active {
+	background-color: rgba(0,0,0,0.1);
+}
+
+.button--primary.button--flat,
+a.button.button--primary.button--flat,
+input[type="button"].button--primary.button--flat,
+input[type="submit"].button--primary.button--flat,
+input[type="reset"].button--primary.button--flat {
+	color: #0074D9;
+}
+
+.button--accent.button--flat,
+a.button.button--accent.button--flat,
+input[type="button"].button--accent.button--flat,
+input[type="submit"].button--accent.button--flat,
+input[type="reset"].button--accent.button--flat {
+	color: #FFDC00;
+}
+
+.button--danger.button--flat,
+a.button.button--danger.button--flat,
+input[type="button"].button--danger.button--flat,
+input[type="submit"].button--danger.button--flat,
+input[type="reset"].button--danger.button--flat {
+	color: #FF4136;
+}
+
+.button--alert.button--flat,
+a.button.button--alert.button--flat,
+input[type="button"].button--alert.button--flat,
+input[type="submit"].button--alert.button--flat,
+input[type="reset"].button--alert.button--flat {
+	color: #FF851B;
+}
+
+.button--success.button--flat,
+a.button.button--success.button--flat,
+input[type="button"].button--success.button--flat,
+input[type="submit"].button--success.button--flat,
+input[type="reset"].button--success.button--flat {
+	color: #2ECC40;
+}
+
+/* Raised buttons */
+.button--raised,
+a.button.button--raised,
+input[type="button"].button--raised,
+input[type="submit"].button--raised,
+input[type="reset"].button--raised {
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
+}
+
+/* Round buttons */
+.button--round,
+a.button.button--round,
+input[type="button"].button--round,
+input[type="submit"].button--round,
+input[type="reset"].button--round {
+	border-radius: 100%;
+	height: 3.6rem;
+	width: 3.6rem;
+	line-height: 3.6rem;
+	padding: 0;
+}
+
+/* Size */
+.button--large,
+a.button.button--large,
+input[type="button"].button--large,
+input[type="submit"].button--large,
+input[type="reset"].button--large {
+	height: 5.1rem;
+	line-height: 5.1rem;
+}
+
+.button--round.button--large,
+a.button.button--round.button--large,
+input[type="button"].button--round.button--large,
+input[type="submit"].button--round.button--large,
+input[type="reset"].button--round.button--large {
+	width: 5.1rem;
+}
+
+.button--small,
+a.button.button--small,
+input[type="button"].button--small,
+input[type="submit"].button--small,
+input[type="reset"].button--small {
+	height: 2.5rem;
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+}
+
+.button--round.button--small,
+a.button.button--round.button--small,
+input[type="button"].button--round.button--small,
+input[type="submit"].button--round.button--small,
+input[type="reset"].button--round.button--small {
+	width: 2.5rem;
 }
 
 /* ============================================================
