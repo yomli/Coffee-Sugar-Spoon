@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /*!
-* CoffeeSuger&Spoon v16.12
+* CoffeeSuger&Spoon v17.01
 * @author: Guillaume Litaudon <guillaume.litaudon@gmail.com>
 * MIT-Beerware License
 */
@@ -46,8 +46,6 @@
 			url("../fonts/latte-bolditalic-webfont.woff") format("woff");
 }
 
-
-
 /* 
    At the time of writing, CSS variables are not fully
    supported (Edge & IE11). This is just the color palette
@@ -69,7 +67,6 @@
 	--maroon-color: #85144b;
 	--fuchsia-color: #F012BE;
 	--purple-color: #B10DC9;
-
 
 	--primary-color: #0074D9;
 	--accent-color: #FFDC00;
@@ -123,7 +120,7 @@ h4, .h4 { font-size: 2.5rem; }
 h5, .h5 { font-size: 1.8rem; }
 h6, .h6 { font-size: 1.6rem; }
 
-h1, h2, h3, h4, h5, h6, p { margin: 0; margin-bottom: 2.5rem;}
+h1, h2, h3, h4, h5, h6, p, details, input { margin: 0; margin-bottom: 2.5rem;}
 
 strong, b, .bold { font-weight: 700; }
 em, i, var, dt, .italic { font-style: italic; }
@@ -177,12 +174,36 @@ hr {
 	display: block;
 	clear: both;
 	height: 1px;
-	width: 60%;
-	margin: 2.5em auto;
+	margin: 0 auto 3.6rem auto;
 	padding: 0;
 	border: 0;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+hr.hr--small {
+	width: 51%;
+}
+
+hr.hr--fading {
 	background: #333;
-	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.2), rgba(0,0,0,0));
+	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.4), rgba(0,0,0,0));
+}
+
+hr.hr--asterism {
+	position: relative;
+	margin-bottom: 5.6rem;
+	background: transparent;
+}
+
+hr.hr--asterism::before {
+	content: '\2042'; /* UTF8 asterism */
+	display: block;
+	position: absolute;
+	top: -2rem;
+	left: 50%;
+	font-family: inherit;
+	font-size: 4.7rem;
+	color: rgba(0, 0, 0, 0.6);
 }
 
 /* Lists */
@@ -197,11 +218,11 @@ ul.list--inline li {
 	list-style-type: none;
 }
 
-ul.list--dash li:before {
+ul.list--dash li::before {
 	content: '— ';
 }
 
-ul.list--arrow li:before {
+ul.list--arrow li::before {
 	content: '→ ';
 }
 
@@ -209,8 +230,6 @@ ul.list--inline li {
 	display: inline-block;
 	margin-right: 1em;
 }
-
-code, kbd, mark { border-radius: 3px; }
 
 /* The <u> tag is for "non-textual annotation"
    such as highlighting a mispelled word.
@@ -228,13 +247,14 @@ abbr[title] {
 }
 abbr[title]::after { content: ' ('attr(title)') '; }
 
+code, kbd, mark { border-radius: 3px; }
 mark, 
 .highlight {
 	display: inline-block;
 	border-radius: 3px;
 	margin: 0 0.1em;
 	padding: 0.1em 0.6em;
-	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	box-shadow:0 0px 2px rgba(0,0,0,0.1), 0px 2px 2px rgba(0,0,0,0.2);
 	position: relative;
 	padding-left: 1.5em;
 	background-color: #FFDC00;
@@ -267,7 +287,7 @@ del {
 	border-radius: 3px;
 	margin: 0 0.1em;
 	padding: 0.1em 0.6em;
-	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0px 2px 2px rgba(0,0,0,0.2);
 	text-decoration: none;
 	background-color: #FFCFCC;
 	color: rgba(0,0,0,0.4);
@@ -292,10 +312,9 @@ ins {
 	border-radius: 3px;
 	margin: 0 0.1em;
 	padding: 0.1em 0.6em;
-	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0px 2px 2px rgba(0,0,0,0.2);
 	text-decoration: none;
 	background-color: #D5F6D9;
-
 	position:relative;
 	padding-left: 1.5em;
 }
@@ -317,9 +336,8 @@ code {
 	border-radius: 3px;
 	margin: 0 0.1em;
 	padding: 0.1em 0.6em;
-	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-	background: rgba(0,0,0,0.1);
-
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.1);	
 	position: relative;
 	padding-left: 1.5em;
 }
@@ -340,10 +358,9 @@ samp {
 	border-radius: 3px;
 	margin: 0 0.1em;
 	padding: 0.1em 0.6em;
-	box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0px 2px 2px rgba(0,0,0,0.2);
 	background: rgba(0,0,0,0.8);
 	color: #fff;
-
 	position: relative;
 	padding-left: 1.5em;
 }
@@ -373,7 +390,6 @@ samp::selection {
 	color: rgba(0,0,0,0.8);
 }
 
-
 kbd {
 	display: inline-block;
 	font-size: 0.8em;
@@ -382,7 +398,7 @@ kbd {
 	border-radius: 3px;
 	background-color: #f7f7f7;
 	border: 1px solid #ccc;	
-	box-shadow: 0px 1px 1px rgba(0,0,0,0.2),
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.2),
 				0 0 0 2px #fff inset;
 	color: #333;
 	text-shadow: 0 1px 0 #fff;
@@ -403,7 +419,7 @@ meter {
 	background: none; /* Required to get rid of the default background property */
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 3px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0,0,0,0.2);
 	height: 1em;
 	display: block;
 	width: 100% !important; /* !important required. to override the inline styles in WebKit. */
@@ -419,7 +435,7 @@ meter::-webkit-meter-bar { /* Yeah, I know, it's lame that we have to copy-paste
 	background: none; /* Required to get rid of the default background property */
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 3px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0,0,0,0.2);
 	height: 1em;
 	display: block;
 	width: 100% !important; /* !important required. to override the inline styles in WebKit. */
@@ -431,28 +447,52 @@ meter::-webkit-meter-optimum-value {
 
 
 /* Spoilers */
-.spoiler, .spoiler > * { 
-	transition: text-shadow 0.5s, color 0.5s, font-weight 0.5s; 
-	text-shadow: none; 
+.spoiler, .spoiler > * { /*background-color: black;*/ 
+	transition: text-shadow 0.4s, color 0.6s; 
+	text-shadow: 0px 0px 6px rgba(0,0,0,0.8); 
+	color: transparent;
 	cursor: zoom-in;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
 }
-.spoiler:not(:hover) { /*background-color: black;*/ 
-	text-shadow: 0px 0px 6px black; 
-	color:transparent; 
-	/*font-size:1.2em;*/
-	font-weight:bold;
+.spoiler:hover, .spoiler:focus { 
+	text-shadow: none;
+	color: inherit;
 }
 /*.spoiler:not(:hover):before { content:'\a0Spoiler'; color:white; }*/
-.spoiler:not(:hover) img {
+.spoiler img {
 	visibility: hidden;
 	opacity: 0;
 }
-/* fix weird transitions on Chrome: */
-blockquote, blockquote > *:not(a) { color: black }
-/* ajouter un truc after pour empêcher le dessous de remonter ? */
 
 /* Add a quadratin tiret before the author */
 blockquote > cite:last-child::before { content: '—\a0'; }
+
+/* ============================================================
+	Block Components
+   ============================================================ */
+
+.card,
+pre {
+	border-radius: 3px;
+	padding: 1.414rem 1.414rem 2rem 2rem;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
+}
+
+pre {
+	background: rgba(0,0,0,0.1);
+	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+details {
+
+}
+
+
 
 /* ============================================================
 	Form Components
@@ -614,7 +654,7 @@ a.button.button--success.button--flat {
 /* Raised buttons */
 .button--raised,
 a.button.button--raised {
-	box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
 }
 
 /* Round buttons */
@@ -668,7 +708,7 @@ textarea {
 	padding: 0;
 	background-color: transparent;
 	border: none;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	border-bottom: 1px solid rgba(0,0,0,0.5);
 	outline: none;
 	box-shadow: none;
 	transition: border ease 0.3s, box-shadow ease 0.6s;
@@ -682,7 +722,7 @@ textarea:focus {
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-	color: rgba(0, 0, 0, 0.5);
+	color: rgba(0,0,0,0.5);
 	opacity: 1;
 }
 
