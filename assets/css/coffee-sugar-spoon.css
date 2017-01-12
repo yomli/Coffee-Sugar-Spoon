@@ -120,7 +120,7 @@ h4, .h4 { font-size: 2.5rem; }
 h5, .h5 { font-size: 1.8rem; }
 h6, .h6 { font-size: 1.6rem; }
 
-h1, h2, h3, h4, h5, h6, p, details, input, select, textarea { margin: 0; margin-bottom: 2.5rem;}
+h1, h2, h3, h4, h5, h6, p, img, details, input, select, textarea { margin: 0; margin-bottom: 2.5rem;}
 
 
 /* Overflows */
@@ -194,7 +194,7 @@ hr {
 	margin: 0 auto 3.6rem auto;
 	padding: 0;
 	border: 0;
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(0,0,0,0.2);
 }
 
 hr.hr--small {
@@ -203,7 +203,7 @@ hr.hr--small {
 
 hr.hr--fading {
 	background: #333;
-	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.4), rgba(0,0,0,0));
+	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.2), rgba(0,0,0,0));
 }
 
 hr.hr--asterism {
@@ -464,7 +464,8 @@ meter::-webkit-meter-optimum-value {
 
 
 /* Spoilers */
-.spoiler, .spoiler > * { /*background-color: black;*/ 
+.spoiler, 
+.spoiler > * { /*background-color: black;*/ 
 	transition: text-shadow 0.4s, color 0.6s; 
 	text-shadow: 0px 0px 6px rgba(0,0,0,0.8); 
 	color: transparent;
@@ -476,7 +477,8 @@ meter::-webkit-meter-optimum-value {
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
 }
-.spoiler:hover, .spoiler:focus { 
+.spoiler:hover, 
+.spoiler:focus { 
 	text-shadow: none;
 	color: inherit;
 }
@@ -486,8 +488,9 @@ meter::-webkit-meter-optimum-value {
 	opacity: 0;
 }
 
-/* Add a quadratin tiret before the author */
-blockquote > cite:last-child::before { content: '—\a0'; }
+blockquote > cite:last-child::before { /* Add a quadratin tiret before the author */
+	content: '—\a0'; 
+}
 
 /* ============================================================
 	Block Components
@@ -512,48 +515,229 @@ details { /* Not supported by IE and Edge */
 /* ============================================================
 	Form Components
    ============================================================ */
-/* Inputs */
-input {
+input,
+textarea,
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	display: block;
 	height: 3.6rem;
 	width: 100%;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-	width: 3.6rem;
-}
-
-input,
-textarea {
-	display: block;
 	padding: 0;
+	color: inherit;
 	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid rgba(0,0,0,0.5);
 	outline: none;
 	box-shadow: none;
 	transition: border ease 0.3s, box-shadow ease 0.6s;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+textarea {
+	max-width: 100%;
+	min-height: 3.6rem;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+	cursor: not-allowed;
+	pointer-events: none;
+	opacity: 0.4;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
 	box-shadow: 0px -1px 0px #0074D9 inset;
 	border-bottom: 1px solid #0074D9;
+	outline: none;
+}
+
+input[type="file"],
+input[type="color"],
+input[type="image"],
+input[type="range"] {
+	border: none;
+	cursor: pointer;
+}
+
+input[type="file"]:focus,
+input[type="color"]:focus,
+input[type="image"]:focus,
+input[type="range"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus {
+	border: none;
+	box-shadow: none;
 }
 
 input::-moz-placeholder,
-textarea::-moz-placeholder {
+textarea::-moz-placeholder { /* Browsers skip the entire thing if they don't recognize the good selector */
 	color: rgba(0,0,0,0.5);
 	opacity: 1;
 }
 
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: rgba(0,0,0,0.5);
+	opacity: 1;
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+	color: rgba(0,0,0,0.5);
+	opacity: 1;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	color: rgba(0,0,0,0.5);
+	opacity: 1;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: rgba(0,0,0,0.5);
+	opacity: 1;
+}
+
+/* Select */
+select {
+	cursor: pointer;
+	/* A little triangle icon */
+	background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuNSk7Ii8+PC9zdmc+");
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 1.414rem;
+}
+
+optgroup {
+	font-weight: inherit;
+	font-style: inherit;
+	color: rgba(0,0,0,0.5);
+}
+
+option {
+	color: rgba(0,0,0,0.8);
+}
+
+/* Checkboxes & Radio */
+input[type="checkbox"],
+input[type="radio"] { /* Reminder: https://coderwall.com/p/a7tbrq/protip-if-you-want-to-style-checkboxes-radio-buttons-or-select-menus-in-firefox-don-t-bother */
+	height: 3.6rem;
+	width: 3.6rem;
+	cursor: pointer;
+	background: -moz-linear-gradient(to top, #DDD, #FAFAFA); /* Required for Firefox, unprefixed doesn't work for checkboxes, -webkit- and -moz- do */
+	background: linear-gradient(to top, #DDD, #FAFAFA);
+}
+
+/* Range */
+input[type=range] {
+	-webkit-appearance: none; /* Webkit draws its slider otherwise */
+	width: 100%; /* Required for Firefox. */
+	background: transparent; /* For Chrome, otherwise white */
+}
+
+input[type=range]::-moz-range-thumb {
+	border: 2px solid rgba(0,0,0,0.4);
+	height: 2rem;
+	width: 2rem;
+	border-radius: 100%;
+	background: #FAFAFA;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 2px solid rgba(0,0,0,0.4);
+	height: 2rem;
+	width: 2rem;
+	border-radius: 100%;
+	background: #FAFAFA;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
+	-webkit-appearance: none;
+	margin-top: -1rem; /* Webkit draws the thumb under the track */
+}
+
+input[type=range]::-ms-thumb {
+	border: 2px solid rgba(0,0,0,0.4);
+	height: 2rem;
+	width: 2rem;
+	border-radius: 100%;
+	background: #FAFAFA;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
+}
+
+input[type=range]:focus::-moz-range-thumb  {
+	border: 2px solid #0074D9;
+	background: #0074D9;
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+	border: 2px solid #0074D9;
+	background: #0074D9;
+}
+
+input[type=range]:focus::-ms-thumb {
+	border: 2px solid #0074D9;
+	background: #0074D9;
+}
+
+input[type=range]::-moz-range-track {
+	height: 2px;
+	background: rgba(0,0,0,0.4);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	height: 2px;
+	background: rgba(0,0,0,0.4);
+}
+
+input[type=range]::-ms-track {
+	height: 2px;
+	background: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+	background: rgba(0,0,0,0.4);
+}
+
+input[type=range]::-ms-fill-upper {
+	background: rgba(0,0,0,0.4);
+}
+
+input[type=range]:focus::-moz-range-track {
+	background: #0074D9;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #0074D9;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: #0074D9;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+	background: rgba(0,0,0,0.4);
+}
+
 /* Buttons */
 button, 
-a.button,
+:not(old).button,
 input[type="button"],
 input[type="submit"],
-input[type="reset"] {
+input[type="reset"],
+input[type="image"] {
 	-moz-appearance: none;
+	-webkit-appearance: none;
 	appearance: none;
 	font-family: inherit;
 	font-size: 1.6rem;
@@ -584,11 +768,12 @@ input[type="reset"] {
 	text-shadow: none; /* To disable the default link behavior */
 }
 
+input[type="image"] {
+	padding: 0;
+}
+
 button::after,
-a.button::after,
-input[type="button"]::after,
-input[type="submit"]::after,
-input[type="reset"]::after { /* Ripple effect */
+:not(old).button::after { /* Ripple effect */
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -618,170 +803,87 @@ input[type="reset"]::after { /* Ripple effect */
 }
 
 button:focus:not(:active)::after,
-a.button:focus:not(:active)::after,
-input[type="button"]:focus:not(:active)::after,
-input[type="submit"]:focus:not(:active)::after,
-input[type="reset"]:focus:not(:active)::after {
+:not(old).button:focus:not(:active)::after {
 	animation: ripple-effect 1s ease-out;
 }
 
 button:disabled,
-a.button.button--disabled,
+:not(old).button.button--disabled,
 input[type="button"]:disabled,
 input[type="submit"]:disabled,
-input[type="reset"]:disabled {
+input[type="reset"]:disabled,
+input[type="image"]:disabled {
 	cursor: not-allowed;
 	pointer-events: none;
 	opacity: 0.6;
 	box-shadow: none !important;
 }
 
-.button--primary,
-.button--danger,
-.button--accent,
-.button--alert,
-.button--success,
-a.button.button--primary,
-a.button.button--danger,
-a.button.button--accent,
-a.button.button--alert,
-a.button.button--success,
-input[type="button"].button--primary,
-input[type="submit"].button--primary,
-input[type="reset"].button--primary,
-input[type="button"].button--danger,
-input[type="submit"].button--danger,
-input[type="reset"].button--danger,
-input[type="button"].button--accent,
-input[type="submit"].button--accent,
-input[type="reset"].button--accent,
-input[type="button"].button--alert,
-input[type="submit"].button--alert,
-input[type="reset"].button--alert,
-input[type="button"].button--success,
-input[type="submit"].button--success,
-input[type="reset"].button--success {
+:not(old).button--primary,
+:not(old).button--danger,
+:not(old).button--accent,
+:not(old).button--alert,
+:not(old).button--success {
 	color: #FAFAFA;
 }
 
-.button--primary,
-a.button.button--primary,
-input[type="button"].button--primary,
-input[type="submit"].button--primary,
-input[type="reset"].button--primary {
+:not(old).button--primary {
 	background-color: #0074D9;
 }
 
-.button--accent,
-a.button.button--accent,
-input[type="button"].button--accent,
-input[type="submit"].button--accent,
-input[type="reset"].button--accent {
+:not(old).button--accent {
 	background-color: #FFDC00;
 }
 
-.button--danger,
-a.button.button--danger,
-input[type="button"].button--danger,
-input[type="submit"].button--danger,
-input[type="reset"].button--danger {
+:not(old).button--danger {
 	background-color: #FF4136;
 }
 
-.button--alert,
-a.button.button--alert,
-input[type="button"].button--alert,
-input[type="submit"].button--alert,
-input[type="reset"].button--alert {
+:not(old).button--alert {
 	background-color: #FF851B;
 }
 
-.button--success,
-a.button.button--success,
-input[type="button"].button--success,
-input[type="submit"].button--success,
-input[type="reset"].button--success {
+:not(old).button--success {
 	background-color: #2ECC40;
 }
 
 /* Flat buttons */
-.button--flat,
-a.button.button--flat,
-input[type="button"].button--flat,
-input[type="submit"].button--flat,
-input[type="reset"].button--flat {
+:not(old).button--flat {
 	color: rgba(0, 0, 0, 0.8);
 	background-color: transparent;
 }
 
-.button--flat:hover,
-.button--flat:active,
-a.button.button--flat:hover,
-a.button.button--flat:active,
-input[type="button"].button--flat:hover,
-input[type="submit"].button--flat:hover,
-input[type="reset"].button--flat:hover,
-input[type="button"].button--flat:active,
-input[type="submit"].button--flat:active,
-input[type="reset"].button--flat:active {
+:not(old).button--flat:hover {
 	background-color: rgba(0,0,0,0.1);
 }
 
-.button--primary.button--flat,
-a.button.button--primary.button--flat,
-input[type="button"].button--primary.button--flat,
-input[type="submit"].button--primary.button--flat,
-input[type="reset"].button--primary.button--flat {
+:not(old).button--primary.button--flat {
 	color: #0074D9;
 }
 
-.button--accent.button--flat,
-a.button.button--accent.button--flat,
-input[type="button"].button--accent.button--flat,
-input[type="submit"].button--accent.button--flat,
-input[type="reset"].button--accent.button--flat {
+:not(old).button--accent.button--flat {
 	color: #FFDC00;
 }
 
-.button--danger.button--flat,
-a.button.button--danger.button--flat,
-input[type="button"].button--danger.button--flat,
-input[type="submit"].button--danger.button--flat,
-input[type="reset"].button--danger.button--flat {
+:not(old).button--danger.button--flat {
 	color: #FF4136;
 }
 
-.button--alert.button--flat,
-a.button.button--alert.button--flat,
-input[type="button"].button--alert.button--flat,
-input[type="submit"].button--alert.button--flat,
-input[type="reset"].button--alert.button--flat {
+:not(old).button--alert.button--flat {
 	color: #FF851B;
 }
 
-.button--success.button--flat,
-a.button.button--success.button--flat,
-input[type="button"].button--success.button--flat,
-input[type="submit"].button--success.button--flat,
-input[type="reset"].button--success.button--flat {
+:not(old).button--success.button--flat {
 	color: #2ECC40;
 }
 
 /* Raised buttons */
-.button--raised,
-a.button.button--raised,
-input[type="button"].button--raised,
-input[type="submit"].button--raised,
-input[type="reset"].button--raised {
+:not(old).button--raised {
 	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
 }
 
 /* Round buttons */
-.button--round,
-a.button.button--round,
-input[type="button"].button--round,
-input[type="submit"].button--round,
-input[type="reset"].button--round {
+:not(old).button--round {
 	border-radius: 100%;
 	height: 3.6rem;
 	width: 3.6rem;
@@ -790,38 +892,22 @@ input[type="reset"].button--round {
 }
 
 /* Size */
-.button--large,
-a.button.button--large,
-input[type="button"].button--large,
-input[type="submit"].button--large,
-input[type="reset"].button--large {
+:not(old).button--large {
 	height: 5.1rem;
 	line-height: 5.1rem;
 }
 
-.button--round.button--large,
-a.button.button--round.button--large,
-input[type="button"].button--round.button--large,
-input[type="submit"].button--round.button--large,
-input[type="reset"].button--round.button--large {
+:not(old).button--round.button--large {
 	width: 5.1rem;
 }
 
-.button--small,
-a.button.button--small,
-input[type="button"].button--small,
-input[type="submit"].button--small,
-input[type="reset"].button--small {
+:not(old).button--small {
 	height: 2.5rem;
 	line-height: 2.5rem;
 	font-size: 1.4rem;
 }
 
-.button--round.button--small,
-a.button.button--round.button--small,
-input[type="button"].button--round.button--small,
-input[type="submit"].button--round.button--small,
-input[type="reset"].button--round.button--small {
+:not(old).button--round.button--small {
 	width: 2.5rem;
 }
 
@@ -829,7 +915,7 @@ input[type="reset"].button--round.button--small {
 	Block Components
    ============================================================ */
 
-img { vertical-align: middle; height: auto; }
+img { vertical-align: middle; height: auto; max-width: 100%; }
 
 
 /* ============================================================
@@ -870,4 +956,5 @@ img { vertical-align: middle; height: auto; }
 http://www.inwebson.com/css3/css-tricks-for-headings-fonts-and-text-styling/
 https://tympanus.net/codrops/2012/11/02/heading-set-styling-with-css/
 text-overflow:ellipsis;
+Hanging or not hanging bullets ?
 */

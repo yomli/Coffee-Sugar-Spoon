@@ -283,7 +283,7 @@ p q r s t u v w x y z { | } ~
 					<button class="button--small button--primary">Button</button>
 					<button class="button--small button--flat button--primary">Button</button>
 					<button class="button--small button--raised button--primary">Button</button>
-					<button class="button--round button--primary button--raised">→</button>
+					<button class="button--small button--round button--primary button--raised">→</button>
 				</div>
 				<div>
 					<button class="button--primary">Button</button>
@@ -408,17 +408,16 @@ p q r s t u v w x y z { | } ~
 					<a href="#" title="Title" class="button button--large button--primary button--raised">Button</a>
 					<a href="#" title="Title" class="button button--large button--raised button--primary button--round">→</a>
 				</div>
-			
 
 	<h2>Images</h2>
 		<h3>Landscape Image</h3>
-			<img src="" alt="" />
+			<img src="sample-image.jpg" alt="Image" />
 
 		<h3>Image Fit</h3>
-			<img src="" alt="" />
+			<img src="sample-image.jpg" alt="Image" />
 
 		<h3>Responsive Image</h3>
-			<img src="" alt="" />	
+			<img src="sample-image.jpg" alt="Image" />	
 
 	<h2>Forms</h2>
 		<h3>Inputs</h3>
@@ -444,9 +443,10 @@ p q r s t u v w x y z { | } ~
 				<input type="number" placeholder="42" />
 
 			<h4>Range Field</h4>
-				<input type="number" />
+				<input type="range" min="0" max="100" step="5" value="30" />
 
 			<h4>Date/Time Inputs</h4>
+				<p><strong>Here for completion only: date/time inputs are not fully supported at the moment.</strong></p>
 				<input type="datetime" />
 				<input type="datetime-local" />
 				<input type="date" />
@@ -461,29 +461,38 @@ p q r s t u v w x y z { | } ~
 				<input type="color" />
 
 			<h4>Image Input</h4>
-				<input type="image" />
+				<input type="image" alt="Submit" />
+				<input type="image" alt="Submit" src="sample-image.jpg" height="36px" />
 
 		<h3>Checkboxes</h3>
-			<h4>Checkbox</h4>
-				<input type="checkbox" checked="checked" />
-				
-			<h4>Slider</h4>
-				<input type="checkbox" checked="checked" />
+			<p><strong>Remember: checkboxes and radio buttons can't be styled, we must use labels to do so.</strong></p>
+			<input type="checkbox" />
+			<input type="checkbox" checked />
+			<input type="checkbox" disabled />
+			<input type="checkbox" checked disabled />
 
 		<h3>Radio Buttons</h3>
-			<h4>Radio Buttons</h4>
-				<input type="radio" checked="checked" />
+			<p><strong>Remember: checkboxes and radio buttons can't be styled, we must use labels to do so.</strong></p>
+			<input type="radio" />
+			<input type="radio" checked />
+			<input type="radio" disabled />
+			<input type="radio" disabled checked />
 
 		<h3>Textarea</h3>
 			<textarea placeholder="Some text"></textarea>
 
 		<h3>Select Menu</h3>
 			<select>
-    			<optgroup label="Select">
-        			<option>Option One</option>
-        			<option>Option Two</option>
-        			<option>Option Three</option>
-    			</optgroup>
+				<optgroup label="Select Group 1">
+					<option>Option One</option>
+					<option>Option Two</option>
+					<option>Option Three</option>
+				</optgroup>
+				<optgroup label="Select Group 2">
+					<option>Option One</option>
+					<option>Option Two</option>
+					<option>Option Three</option>
+				</optgroup>
 			</select>
 
 		<h3>Buttons</h3>
