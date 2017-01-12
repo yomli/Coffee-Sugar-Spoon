@@ -785,6 +785,12 @@ button::after,
 	border-radius: 100%;
 	transform: scale(1, 1) translate(-50%);
 	transform-origin: 50% 50%;
+	visibility: hidden; /* Prevents the effect to run when page loads */
+}
+
+button:focus::after,
+:not(old).button:focus::after {
+	visibility: visible;
 }
 
 @keyframes ripple-effect {
@@ -802,9 +808,18 @@ button::after,
   	}
 }
 
-button:focus:not(:active)::after,
-:not(old).button:focus:not(:active)::after {
+button:not(:active)::after,
+:not(old).button:not(:active)::after {
 	animation: ripple-effect 1s ease-out;
+}
+
+button:focus,
+:not(old).button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="image"]:focus {
+	opacity: 0.8;
 }
 
 button:disabled,
