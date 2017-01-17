@@ -493,26 +493,6 @@ blockquote > cite:last-child::before { /* Add a quadratin tiret before the autho
 }
 
 /* ============================================================
-	Block Components
-   ============================================================ */
-
-.card,
-pre {
-	border-radius: 3px;
-	padding: 1.414rem 1.414rem 2rem 2rem;
-	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
-}
-
-pre {
-	background: rgba(0,0,0,0.1);
-	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-}
-
-details { /* Not supported by IE and Edge */
-
-}
-
-/* ============================================================
 	Form Components
    ============================================================ */
 input,
@@ -752,7 +732,7 @@ input[type="image"] {
 	overflow: hidden;
 	position: relative;
 	border-radius: 3px;
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(0,0,0,0.8);
 	background-color: transparent;
 	background-image: none;
 	display: inline-block;
@@ -802,10 +782,10 @@ button:focus::after,
 		transform: scale(25, 25);
 		opacity: 1;
 	}
-  	100% {
+	100% {
 		opacity: 0;
 		transform: scale(40, 40);
-  	}
+	}
 }
 
 button:not(:active)::after,
@@ -813,17 +793,27 @@ button:not(:active)::after,
 	animation: ripple-effect 1s ease-out;
 }
 
-button:focus,
-:not(old).button:focus,
-input[type="button"]:focus,
-input[type="submit"]:focus,
-input[type="reset"]:focus,
-input[type="image"]:focus {
-	opacity: 0.8;
+@keyframes form-ripple-effect {
+	0% {
+    opacity: 1;
+	}
+	20% {
+    opacity: 0.4;
+	}
+  100% {
+    opacity: 1;
+  }
+}
+
+input[type="button"]:focus:not(:active),
+input[type="submit"]:focus:not(:active),
+input[type="reset"]:focus:not(:active),
+input[type="image"]:focus:not(:active) {
+	animation: form-ripple-effect 1s ease-out;
 }
 
 button:disabled,
-:not(old).button.button--disabled,
+.button.button--disabled,
 input[type="button"]:disabled,
 input[type="submit"]:disabled,
 input[type="reset"]:disabled,
@@ -868,8 +858,10 @@ input[type="image"]:disabled {
 	background-color: transparent;
 }
 
-:not(old).button--flat:hover {
+:not(old).button--flat:hover,
+:not(old).button--flat:focus {
 	background-color: rgba(0,0,0,0.1);
+	outline: none;
 }
 
 :not(old).button--primary.button--flat {
@@ -929,30 +921,98 @@ input[type="image"]:disabled {
 /* ============================================================
 	Block Components
    ============================================================ */
+.card,
+pre {
+	border-radius: 3px;
+	padding: 1.414rem 1.414rem 2rem 2rem;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.2);
+}
 
-img { vertical-align: middle; height: auto; max-width: 100%; }
+pre {
+	background: rgba(0,0,0,0.1);
+	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+img { 
+	vertical-align: middle;
+	height: auto;
+	max-width: 100%;
+}
+
+details { /* Not supported by IE and Edge */
+
+}
 
 
 /* ============================================================
 	Helpers
    ============================================================ */
 
- .uppercase { text-transform: uppercase; }
+.uppercase { 
+ 	text-transform: uppercase; 
+}
 
  /* When a text is made all capitals, 
 	upper characters are lowercase. 
 	e.g. Mᵐᵉ DE SÉVIGNÉ */
- .uppercase sup { text-transform: lowercase; }
+.uppercase sup { 
+ 	text-transform: lowercase; 
+}
 
- .underline { text-decoration: underline; }
+.underline { 
+ 	text-decoration: underline; 
+}
 
- .small-caps { font-variant: small-caps; }
+.small-caps { 
+ 	font-variant: small-caps; 
+}
 
- .hyphens {
+.hyphens {
  	-webkit-hyphens: auto;
  	-ms-hyphens: auto;
  	hyphens: auto;
- }
+}
+
+/* CSS Filters */
+.filter--blur {
+	-webkit-filter: blur(5.65px);
+	filter: blur(5.65px);
+}
+
+.filter--brightness {
+	-webkit-filter: brightness(150%);
+	filter: brightness(150%);
+}
+
+.filter--contrast {
+	-webkit-filter: contrast(150%);
+	filter: contrast(150%);
+}
+
+.filter--invert {
+	-webkit-filter: invert(100%);
+	filter: invert(100%);
+}
+
+.filter--sepia {
+	-webkit-filter: sepia(100%);
+	filter: sepia(100%);
+}
+
+.filter--grayscale {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+.filter--desaturate {
+	-webkit-filter: saturate(47%);
+	filter: saturate(47%);
+}
+
+.filter--drop-shadow {
+	-webkit-filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+	filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+}
 
 
  /* ============================================================
